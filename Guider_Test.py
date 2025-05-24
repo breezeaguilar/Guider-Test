@@ -220,8 +220,13 @@ def test():
     cam.release()
     cv2.destroyAllWindows()
 
+    return x, y
+
+
+# needs to return only coordinates
+
 if __name__ == "__main__":
-    # test()
+    sun_x, sun_y = test()
     cam = cv2.VideoCapture(0)
     
     start_time = time.time()
@@ -246,7 +251,7 @@ if __name__ == "__main__":
 
         cv2.imshow("Captured Frame", frame)
         key = cv2.waitKey(1)
-
+        '''
         if key == ord('p'): # print coordinates, wrong tho, fix later maybe? pressing c should do the same thing
             # print()
             print("gets here")
@@ -255,12 +260,18 @@ if __name__ == "__main__":
                 print(f"{pos[0]} {pos[1]} {pos[2]} {pos[3]}")
             else:
                 print("Position not found")
-
-        if key == ord('c'): # draw contour to ensure it is found, prints coordinates
-            drawContour(frame)
+        '''
+        
+        drawContour(frame)
 
         if key == 27:
             break
+
+    height, width = frame.shape[:2]
+    cam_center_x = width // 2
+    cam_center_y = height // 2
+
+    print(cam_center_x, cam_center_y, sun_x, sun_y)
 
     cam.release()
     cv2.destroyAllWindows()
