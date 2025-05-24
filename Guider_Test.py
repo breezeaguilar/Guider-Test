@@ -264,39 +264,3 @@ if __name__ == "__main__":
 
     cam.release()
     cv2.destroyAllWindows()
-    
-
-'''
-cam = cv2.VideoCapture(0)
-
-while True:
-    
-    if not cam.isOpened():
-        print("Cannot open camera")
-        exit()
-
-    ret, frame = cam.read()
-
-    if not ret:
-        print("Could not capture frame")
-        cam.release()
-        exit()
-
-    print("Camera opened successfully")
-    key = cv2.waitKey(0)
-
-    height, width = frame.shape[:2]
-    channels = 1
-    cam_center_x = width // 2
-    cam_center_y = height // 2
-
-    cv2.circle(frame, (cam_center_x, cam_center_y), 5, (0, 0, 255), -1)
-
-    cv2.imshow("Captured Frame", frame)
-
-    if key == 27:
-        break
-
-cam.release()
-cv2.destroyAllWindows()
-# '''
